@@ -24,6 +24,7 @@
       <PackageReference Include="Flurl.Http" Version="4.0.2" />
       <PackageReference Include="Mapster" Version="7.4.1-pre01" />
       <PackageReference Include="Mapster.DependencyInjection" Version="1.0.2-pre01" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 

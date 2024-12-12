@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  quotemine-webapi:
+    image: quotemine:latest
+    networks:
+      - quoteminenet
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Development}
+        
+networks:
+  quoteminenet:
+    external: true
