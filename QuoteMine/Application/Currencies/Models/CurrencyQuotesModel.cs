@@ -1,6 +1,6 @@
-namespace Presentation.Http.Coins.Requests;
+namespace Application.Currencies.Models;
 
-public class CoinLatestQuotesResponse
+public class CurrencyQuotesModel
 {
     public string Symbol { get; set; }
     public Dictionary<string, decimal> Quotes { get; set; }
