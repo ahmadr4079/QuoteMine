@@ -4,14 +4,23 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <Version>1.0.0</Version>
     </PropertyGroup>
-
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="Asp.Versioning.Mvc" Version="8.1.0" />
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Application\Application.csproj"/>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Http\Coins\Requests\" />
+      <Folder Include="Http\Coins\Responses\" />
     </ItemGroup>
 
 </Project>
