@@ -23,3 +23,7 @@ app.UseRouting();
 app.MapControllers();
 app.MapSwagger();
 app.Run();
+
+public partial class Program
+{
+}

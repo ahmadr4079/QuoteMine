@@ -13,7 +13,12 @@ public static class ServiceConfiguration
     public static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
     {
         var redisConfiguration = configuration.GetSection("Redis")["ConnectionString"];
-        var redis = ConnectionMultiplexer.Connect(redisConfiguration);
+        var configurationOptions = new ConfigurationOptions
+        {
+            EndPoints = { redisConfiguration },
+            AbortOnConnectFail = false
+        };
+        var redis = ConnectionMultiplexer.Connect(configurationOptions);
         services.AddSingleton<IConnectionMultiplexer>(redis);
         services.AddSingleton<ICurrencyRedisAdapter, CurrencyRedisAdapter>();
         services.AddScoped<ICurrencyLogic, CurrencyLogic>();
