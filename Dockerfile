@@ -6,7 +6,7 @@ WORKDIR /app/QuoteMine/Presentation
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
-FROM repo.asax.ir/dotnet/aspnet:8.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/QuoteMine/Presentation/out ./
 

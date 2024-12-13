@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  cache:
+    image: redis:alpine
+    container_name: cache
+    restart: always
+    networks:
+      - quoteminenet
+    volumes:
+      - local-services-cache-data:/data
+    ports:
+      - "6379:6379"
+
+volumes:
+  local-services-cache-data:
+    external: true
+    
+networks:
+  quoteminenet:
+    external: true
