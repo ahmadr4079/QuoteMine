@@ -10,7 +10,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Development}
       - Redis__ConnectionString=${Redis__ConnectionString:-cache:6379}
-      - AppSettings__CoinMarketCapApiBaseUrl=${AppSettings__CoinMarketCapApiBaseUrl:-http://localhost:8000}
+      - AppSettings__CoinMarketCapApiBaseUrl=${AppSettings__CoinMarketCapApiBaseUrl:-https://sandbox-api.coinmarketcap.com}
+      - AppSettings__CoinMarketCapApiKey=${AppSettings__CoinMarketCapApiKey:-add-api-key}
         
 networks:
   quoteminenet:
