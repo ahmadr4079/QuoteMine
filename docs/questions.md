@@ -1,19 +1,22 @@
-## Time Spend
+## Spend Time
 
-| Part                 | Spend Time (H) |
-|----------------------|----------------|
-| initialize project   | 1.5            |
-| add quotes api       | 4              |
-| dockerize project    | 0.5            |
-| cache mechanism      | 1              |
-| validation mechanism | 1.5            |
-| total                | 10             |
+| Part                          | Spend Time (H) |
+|-------------------------------|----------------|
+| initialize project            | 1.5            |
+| add quotes api                | 4              |
+| dockerize project             | 0.5            |
+| cache mechanism               | 1              |
+| validation mechanism          | 1.5            |
+| test structure implementation | 2              |
+| refactor and in-memory cache  | 0.5            |
+| total                         | 11             |
 
-## Need to add
+## Need to Add
 
-- add circuit breaker and retry mechanism
+- add circuit breaker and retry mechanism for external adapter
 - add rate limiting mechanism
 - add last_update_time in flow and update every time API call succeed
+- handle external adapter exceptions
 
 ## Performance Issue in Production
 
@@ -22,8 +25,6 @@ we use sentry in production environment
 - filter transactions with a time duration exceeding the 95th
 - check the transaction trace view for the slowest transaction
 - identify the section that took the most time and review it
-- API test
-- error handling infrastructure
 
 ## Technical Book
 
