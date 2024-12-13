@@ -15,7 +15,6 @@ public static class MapsterRegistration
         {
             typeof(MappingPresentation).Assembly,
             typeof(MappingInfrastructure).Assembly
-
         };
         config.Scan(assemblies);
         service.AddSingleton(config);

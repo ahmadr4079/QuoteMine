@@ -27,9 +27,9 @@ public static class SwaggerConfiguration
         app.UseSwaggerUI(c =>
         {
             var provider = app.ApplicationServices.GetRequiredService<IApiVersionDescriptionProvider>();
-            foreach (var version in provider.ApiVersionDescriptions) c.SwaggerEndpoint($"/swagger/{version.GroupName}/swagger.json", version.GroupName);
+            foreach (var version in provider.ApiVersionDescriptions)
+                c.SwaggerEndpoint($"/swagger/{version.GroupName}/swagger.json", version.GroupName);
             c.DocumentTitle = "QuoteMine";
         });
     }
-
 }

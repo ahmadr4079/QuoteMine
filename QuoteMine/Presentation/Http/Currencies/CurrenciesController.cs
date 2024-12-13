@@ -7,12 +7,11 @@ using Presentation.Http.Currencies.Responses;
 
 namespace Presentation.Http.Currencies;
 
-
 [ApiVersion("1.0")]
 public class CurrenciesController : BaseController
 {
-    private readonly IMapper _mapper;
     private readonly ICurrencyLogic _currencyLogic;
+    private readonly IMapper _mapper;
 
 
     public CurrenciesController(ICurrencyLogic currencyLogic, IMapper mapper)
@@ -23,7 +22,8 @@ public class CurrenciesController : BaseController
 
 
     [HttpGet("quotes/latest")]
-    public async Task<ActionResult<CurrencyLatestQuotesResponse>> GetCurrencyLatestQuotes([FromQuery] CurrencyLatestQuotesRequest request,
+    public async Task<ActionResult<CurrencyLatestQuotesResponse>> GetCurrencyLatestQuotes(
+        [FromQuery] CurrencyLatestQuotesRequest request,
         CancellationToken cancellationToken)
     {
         var currencyQuotesModel = await _currencyLogic.GetLatestCurrencyQuotes(request.Symbol, cancellationToken);

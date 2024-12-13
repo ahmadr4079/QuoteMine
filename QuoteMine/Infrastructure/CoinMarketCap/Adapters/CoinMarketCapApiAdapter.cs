@@ -10,13 +10,14 @@ namespace Infrastructure.CoinMarketCap.Adapters;
 
 public class CoinMarketCapApiAdapter(IOptionsMonitor<AppSettings> optionsMonitor) : ICoinMarketCapApiAdapter
 {
-    private readonly FlurlClient _client = new FlurlClient(optionsMonitor.CurrentValue.CoinMarketCapApiBaseUrl);
+    private readonly FlurlClient _client = new(optionsMonitor.CurrentValue.CoinMarketCapApiBaseUrl);
+
     public async Task<LatestQuoteOutput> GetLatestQuote(LatestQuoteInput input, CancellationToken cancellationToken)
     {
         var response = await _client.Request(optionsMonitor.CurrentValue.CoinMarketCapApiBaseUrl
-            .AppendPathSegment("/v1/cryptocurrency/quotes/latest")
-            .SetQueryParam("symbol", input.Symbol)
-            .SetQueryParam("convert", input.Convert))
+                .AppendPathSegment("/v1/cryptocurrency/quotes/latest")
+                .SetQueryParam("symbol", input.Symbol)
+                .SetQueryParam("convert", input.Convert))
             .GetAsync(cancellationToken: cancellationToken);
         var result = await response.GetJsonAsync<LatestQuoteOutput>();
         return result;
