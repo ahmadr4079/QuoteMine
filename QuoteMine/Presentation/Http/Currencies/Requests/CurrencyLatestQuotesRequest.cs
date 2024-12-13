@@ -1,6 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using FluentValidation;
-
 namespace Presentation.Http.Currencies.Requests;
 
 public class CurrencyLatestQuotesRequest

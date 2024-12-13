@@ -1,0 +1,9 @@
+global using System.ComponentModel.DataAnnotations;
+global using Application.Helpers.Exceptions;
+global using Asp.Versioning;
+global using FluentValidation;
+global using MapsterMapper;
+global using Microsoft.AspNetCore.Mvc;
+global using Presentation.Configurations;
+global using Swashbuckle.AspNetCore.Annotations;
+global using Swashbuckle.AspNetCore.Filters;

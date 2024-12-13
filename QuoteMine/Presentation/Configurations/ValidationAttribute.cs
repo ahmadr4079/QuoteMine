@@ -1,5 +1,3 @@
-using Application.Helpers.Exceptions;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Presentation.Configurations;

@@ -1,6 +1,5 @@
 using Infrastructure.Helpers.Mapping;
 using Mapster;
-using MapsterMapper;
 using Presentation.Helpers.Mapping;
 
 namespace Presentation.Configurations.Extensions;

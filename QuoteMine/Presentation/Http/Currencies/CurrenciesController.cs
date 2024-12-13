@@ -1,10 +1,6 @@
 using Application.Currencies.Interfaces;
-using Asp.Versioning;
-using MapsterMapper;
-using Microsoft.AspNetCore.Mvc;
 using Presentation.Http.Currencies.Requests;
 using Presentation.Http.Currencies.Responses;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace Presentation.Http.Currencies;
 

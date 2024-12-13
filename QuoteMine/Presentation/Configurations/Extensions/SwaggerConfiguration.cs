@@ -1,8 +1,6 @@
 using System.Reflection;
-using Application.Helpers.Exceptions;
 using Asp.Versioning.ApiExplorer;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Filters;
 
 namespace Presentation.Configurations.Extensions;
 

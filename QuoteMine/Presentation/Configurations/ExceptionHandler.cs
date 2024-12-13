@@ -1,4 +1,3 @@
-using Application.Helpers.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 
 namespace Presentation.Configurations;
