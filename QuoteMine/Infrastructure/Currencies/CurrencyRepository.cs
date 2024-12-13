@@ -32,12 +32,11 @@ public class CurrencyRepository(
             {
                 var quotes = v["quote"]?.AsObject().ToDictionary(item => item.Key,
                     item => item.Value["price"].GetValue<decimal>()) ?? new Dictionary<string, decimal>();
-                currencyQuotesModel = new CurrencyQuotesModel { Symbol = symbol, Quotes = quotes };
+                currencyQuotesModel = new CurrencyQuotesModel(symbol, quotes);
             }
             else
             {
-                currencyQuotesModel = new CurrencyQuotesModel
-                    { Symbol = symbol, Quotes = new Dictionary<string, decimal>() };
+                currencyQuotesModel = new CurrencyQuotesModel(symbol, new Dictionary<string, decimal>());
             }
 
             await currencyRedisAdapter.SetCacheAsync(currencyQuotesModelCacheKey, currencyQuotesModel, ExpirationTime,

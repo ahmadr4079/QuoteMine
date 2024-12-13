@@ -3,9 +3,7 @@ using Newtonsoft.Json;
 
 namespace Infrastructure.CoinMarketCap.Outputs;
 
-public class LatestQuoteOutput
-{
-    [JsonProperty("status")] public JsonObject Status { get; set; }
-
-    [JsonProperty("data")] public JsonObject Data { get; set; }
-}
+public record LatestQuoteOutput(
+    [property: JsonProperty("status")] JsonObject Status,
+    [property: JsonProperty("data")] JsonObject Data
+);

@@ -1,7 +1,3 @@
 namespace Application.Currencies.Models;
 
-public class CurrencyQuotesModel
-{
-    public string Symbol { get; set; }
-    public Dictionary<string, decimal> Quotes { get; set; }
-}
+public record CurrencyQuotesModel(string Symbol, Dictionary<string, decimal> Quotes);
