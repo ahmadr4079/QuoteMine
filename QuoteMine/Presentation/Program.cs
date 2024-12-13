@@ -2,6 +2,8 @@ using Presentation.Configurations;
 using Presentation.Configurations.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 builder.ConfigureEnvironment();
 builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
 builder.Services.AddExceptionHandler<ExceptionHandler>();
@@ -15,7 +17,7 @@ builder.Services.ConfigureApiVersion();
 
 var app = builder.Build();
 app.UseExceptionHandler(_ => { });
-app.UseSwaggerAndUi();
+app.UseSwaggerAndUi(builder);
 app.UseHttpsRedirection();
 app.UseRouting();
 app.MapControllers();

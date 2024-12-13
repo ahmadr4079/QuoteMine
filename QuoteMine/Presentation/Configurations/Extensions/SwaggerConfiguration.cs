@@ -26,15 +26,18 @@ public static class SwaggerConfiguration
         service.AddSwaggerExamplesFromAssemblies(typeof(UnknownExceptionExamples).Assembly);
     }
 
-    public static void UseSwaggerAndUi(this IApplicationBuilder app)
+    public static void UseSwaggerAndUi(this IApplicationBuilder app, WebApplicationBuilder builder)
     {
-        _ = app.UseSwagger();
-        app.UseSwaggerUI(c =>
+        if (builder.Environment.IsDevelopment())
         {
-            var provider = app.ApplicationServices.GetRequiredService<IApiVersionDescriptionProvider>();
-            foreach (var version in provider.ApiVersionDescriptions)
-                c.SwaggerEndpoint($"/swagger/{version.GroupName}/swagger.json", version.GroupName);
-            c.DocumentTitle = "QuoteMine";
-        });
+            _ = app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                var provider = app.ApplicationServices.GetRequiredService<IApiVersionDescriptionProvider>();
+                foreach (var version in provider.ApiVersionDescriptions)
+                    c.SwaggerEndpoint($"/swagger/{version.GroupName}/swagger.json", version.GroupName);
+                c.DocumentTitle = "QuoteMine";
+            });
+        }
     }
 }
