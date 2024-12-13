@@ -1,6 +1,8 @@
 using System.Reflection;
+using Application.Helpers.Exceptions;
 using Asp.Versioning.ApiExplorer;
 using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace Presentation.Configurations.Extensions;
 
@@ -18,7 +20,10 @@ public static class SwaggerConfiguration
             var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             c.IncludeXmlComments(xmlPath, true);
+            c.ExampleFilters();
+            c.EnableAnnotations();
         });
+        service.AddSwaggerExamplesFromAssemblies(typeof(UnknownExceptionExamples).Assembly);
     }
 
     public static void UseSwaggerAndUi(this IApplicationBuilder app)
