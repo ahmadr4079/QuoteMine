@@ -18,6 +18,8 @@ public class CoinMarketCapApiAdapter(IOptionsMonitor<AppSettings> optionsMonitor
                 .AppendPathSegment("/v1/cryptocurrency/quotes/latest")
                 .SetQueryParam("symbol", input.Symbol)
                 .SetQueryParam("convert", input.Convert))
+            .WithHeader("X-CMC_PRO_API_KEY", optionsMonitor.CurrentValue.CoinMarketCapApiKey)
+            .AllowAnyHttpStatus()
             .GetAsync(cancellationToken: cancellationToken);
         var result = await response.GetJsonAsync<LatestQuoteOutput>();
         return result;

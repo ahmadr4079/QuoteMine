@@ -28,6 +28,7 @@ public class CurrencyRepository(
             var latestQuote =
                 await coinMarketCapApiAdapter.GetLatestQuote(new LatestQuoteInput(symbol,
                     optionsMonitor.CurrentValue.QuoteCurrencies), cancellationToken);
+            if (latestQuote.Data is null) return new CurrencyQuotesModel(symbol, new Dictionary<string, decimal>());
             if (latestQuote.Data.TryGetPropertyValue(symbol, out var v))
             {
                 var quotes = v["quote"]?.AsObject().ToDictionary(item => item.Key,
@@ -36,7 +37,7 @@ public class CurrencyRepository(
             }
             else
             {
-                currencyQuotesModel = new CurrencyQuotesModel(symbol, new Dictionary<string, decimal>());
+                return new CurrencyQuotesModel(symbol, new Dictionary<string, decimal>());
             }
 
             await currencyRedisAdapter.SetCacheAsync(currencyQuotesModelCacheKey, currencyQuotesModel, ExpirationTime,
