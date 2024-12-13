@@ -4,6 +4,7 @@ using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Http.Currencies.Requests;
 using Presentation.Http.Currencies.Responses;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Presentation.Http.Currencies;
 
@@ -22,6 +23,7 @@ public class CurrenciesController : BaseController
 
 
     [HttpGet("quotes/latest")]
+    [SwaggerResponse(200, type: typeof(CurrencyLatestQuotesResponse))]
     public async Task<ActionResult<CurrencyLatestQuotesResponse>> GetCurrencyLatestQuotes(
         [FromQuery] CurrencyLatestQuotesRequest request,
         CancellationToken cancellationToken)
