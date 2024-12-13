@@ -13,7 +13,6 @@
 
 - add circuit breaker and retry mechanism
 - add rate limiting mechanism
-- change flow to have response when redis is down
 - add last_update_time in flow and update every time API call succeed
 
 ## Performance Issue in Production

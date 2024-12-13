@@ -13,4 +13,9 @@ public class CurrencyRedisAdapterMock : ICurrencyRedisAdapter
     {
         return default!;
     }
+
+    public async Task<bool> IsConnectedAsync(CancellationToken cancellationToken)
+    {
+        return false;
+    }
 }

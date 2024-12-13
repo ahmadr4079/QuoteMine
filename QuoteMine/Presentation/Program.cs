@@ -2,6 +2,7 @@ using Presentation.Configurations.Extensions;
 using ValidationAttribute = Presentation.Configurations.ValidationAttribute;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddMemoryCache();
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.ConfigureEnvironment();

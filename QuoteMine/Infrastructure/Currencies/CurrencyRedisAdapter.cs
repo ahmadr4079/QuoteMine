@@ -16,15 +16,28 @@ public class CurrencyRedisAdapter : ICurrencyRedisAdapter
     public async Task SetCacheAsync<T>(string key, T value, TimeSpan expirationTime,
         CancellationToken cancellationToken)
     {
-        var db = _redisClient.GetDatabase();
-        var data = JsonSerializer.Serialize(value);
-        await db.StringSetAsync(key, data, expirationTime);
+        if (_redisClient.IsConnected)
+        {
+            var db = _redisClient.GetDatabase();
+            var data = JsonSerializer.Serialize(value);
+            await db.StringSetAsync(key, data, expirationTime);
+        }
     }
 
     public async Task<T> GetCacheAsync<T>(string key, CancellationToken cancellationToken)
     {
-        var db = _redisClient.GetDatabase();
-        var data = await db.StringGetAsync(key);
-        return data.HasValue ? JsonSerializer.Deserialize<T>(data) : default;
+        if (_redisClient.IsConnected)
+        {
+            var db = _redisClient.GetDatabase();
+            var data = await db.StringGetAsync(key);
+            return data.HasValue ? JsonSerializer.Deserialize<T>(data) : default;
+        }
+
+        return default;
+    }
+
+    public async Task<bool> IsConnectedAsync(CancellationToken cancellationToken)
+    {
+        return _redisClient.IsConnected;
     }
 }
