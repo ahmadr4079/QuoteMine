@@ -14,9 +14,9 @@
 ## Need to Add
 
 - add circuit breaker and retry mechanism for external adapter
-- add rate limiting mechanism
+- add rate limiting mechanism (based on ip in every controllers)
 - add last_update_time in flow and update every time API call succeed
-- handle external adapter exceptions
+- handle external adapter exceptions (create enum from all error codes in external api and map it to internal exceptions)
 
 ## Performance Issue in Production
 
